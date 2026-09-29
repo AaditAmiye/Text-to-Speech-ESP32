@@ -10,13 +10,10 @@ def tts():
     text = request.args.get("text", "Hello")
 
     async def generate():
-        communicate = edge_tts.Communicate(
+        await edge_tts.Communicate(
             text,
-            "en-US-AnaNeural",
-            rate="+15%",
-            pitch="+10Hz"
-        )
-        await communicate.save("speech.mp3")
+            "en-US-AnaNeural"
+        ).save("speech.mp3")
 
     asyncio.run(generate())
 
@@ -24,5 +21,3 @@ def tts():
         "speech.mp3",
         mimetype="audio/mpeg"
     )
-
-app.run(host="0.0.0.0", port=5000)
