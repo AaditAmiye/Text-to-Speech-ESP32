@@ -1,4 +1,5 @@
-flask
+Flask
 edge-tts
 pydub
+audioop-lts
 gunicorn
